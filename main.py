@@ -4,5 +4,5 @@ import db
 #def _init_ ():
 print ('dshfsdjk')
 planes = db.Planes()
-interface.menu(planes)
+interface.menu(planes,0)
 
