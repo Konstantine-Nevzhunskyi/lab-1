@@ -19,7 +19,10 @@ def menu(planes,i):
         planes.PrintFlight(name)
     elif c==4:
         name = raw_input('Plane name:')
-        planes.NewFlight(name)
+        froM = raw_input('Flys from:')
+        to = raw_input('Flys to:')
+        time = raw_input('time:')
+        planes.NewFlight(name, time, froM, to)
     elif c == 5:
         planes.Save()
 

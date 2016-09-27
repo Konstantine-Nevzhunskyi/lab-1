@@ -26,8 +26,9 @@ class Planes:
         for plane in Planes.planes:
             if plane['Name'] == name:
                 f = 1
-                Planes.planes.append({'Name': name, 'Flights': [], 'Model': model})
         if f == 0:
+            Planes.planes.append({'Name': name, 'Flights': [], 'Model': model})
+        else:
             print 'Error, there is the same name'
 
     def PrintFlight(self, name):
