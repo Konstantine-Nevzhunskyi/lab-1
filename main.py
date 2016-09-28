@@ -1,8 +1,7 @@
 import interface
 import db
 
-#def _init_ ():
-print ('dshfsdjk')
+#def __init__ ():
 planes = db.Planes()
 interface.menu(planes,0)
 

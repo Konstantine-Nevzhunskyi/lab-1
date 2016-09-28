@@ -11,6 +11,19 @@ class Planes:
         for plane in Planes.planes:
             print plane['Name'], plane['Model']
 
+    def PrintAll(self):
+        f2 = 0
+        f = 0
+        for plane in Planes.planes:
+            print plane['Name'], plane['Model']
+            for flight in plane['Flights']:
+                print '   ', flight['Time'], '      ', flight['From'], '->', flight['To']
+                f2 = 1
+            if f2 == 0:
+                    print '    This plane has no Flights'
+            f = 1
+        if f == 0:
+            print('No planes')
 
     def NewFlight(self, name, time, froM, to):
         f = 0
@@ -19,7 +32,7 @@ class Planes:
                 plane['Flights'].append({'Time': time, 'From': froM, 'To': to})
                 f = 1
         if f == 0:
-            print('Error, no plane with this name')
+            print('Error, no planes with this name')
 
     def NewPlane(self, name, model):
         f = 0
@@ -38,13 +51,54 @@ class Planes:
             if plane['Name']== name:
                 print plane['Name'], plane['Model']
                 for flight in plane['Flights']:
-                    print '   ', flight['Time'], flight['From'], flight['To']
+                    print '   ', flight['Time'], '      ', flight['From'], '->', flight['To']
                     f2 = 1
                 if f2 == 0:
                     print '    This plane has no Flights'
                 f = 1
         if f == 0:
-            print('Error, no plane with this name')
+            print('Error, no planes with this name')
+
+    def DelPlane(self,name):
+        f = 0
+        i=0
+        while Planes.planes[i]['Name']!=name:
+            i+=1
+        if Planes.planes[i]['Name']==name:
+            f = 1
+            for j in range (0,len(Planes.planes[i]['Flights'])):
+                Planes.planes[i]['Flights'][j].clear()
+            del(Planes.planes[i]['Flights'])
+            Planes.planes[i].clear()
+            del(Planes.planes[i])
+        if f == 0:
+            print 'Error, no planes with this name'
+
+    def DelFlight(self, name, time):
+        f = 0
+        f2 = 0
+        for plane in Planes.planes:
+            if plane['Name'] == name:
+                i = 0
+                while plane['Flights'][i]['Time']!=time:
+                    i+=1
+                if plane['Flights'][i]['Time']==time:
+                    plane['Flights'][i].clear()
+                    del (plane['Flights'])[i]
+                    f2 = 1
+                #for flight in plane['Flights']:
+                    #if flight['Time']==time:
+                        #flight=[]
+                        #flight.clear()
+                        #del (plane['Flights'])[i]
+
+                        #f2 = 1
+                if f2 == 0:
+                    print '    Error, no flights with this time'
+                f = 1
+        if f == 0:
+            print('Error, no planes with this name')
+    def
 
     def Search(self):
         for plane in Planes.planes:
