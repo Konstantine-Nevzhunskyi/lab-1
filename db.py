@@ -6,7 +6,6 @@ class Planes:
         input = open('data.pkl', 'rb')
         Planes.planes = pickle.load(input)
         input.close()
-
     def Print(self):
         for plane in Planes.planes:
             print plane['Name'], plane['Model']
@@ -98,7 +97,41 @@ class Planes:
                 f = 1
         if f == 0:
             print('Error, no planes with this name')
-    def
+    def Edit(self, name, newName, newModel, f_change, time, newTo, newFrom, newTime):
+        f3 = 0
+        for plane in Planes.planes:
+            if plane['Name'] == newName:
+              f3 += 1
+        if f3 == 0 or f3 == 1 and newName==name:
+            f = 0
+            for plane in Planes.planes:
+                if plane['Name'] == name:
+                    f = 1
+                    f2 = 0
+                    plane['Name'] = newName
+                    plane['Model'] = newModel
+                    if f_change == 1:
+                        f4=0
+                        for flight in plane['Flights']:
+                            if flight['Time']==newTime:
+                                f4 += 1
+                        if f4 == 0 or f4 == 1 and time == newTime:
+                            for flight in plane['Flights']:
+                                if flight['Time']==time:
+                                    f2 = 1
+                                    flight['Time']=newTime
+                                    flight['From']=newFrom
+                                    flight['To']=newTo
+                            if f2 == 0:
+                                print 'Error, no flight with this time'
+                        else:
+                            print 'Error, wrong time'
+
+            if f == 0:
+                print('Error, no planes with this name')
+        else:
+            print('Error, wrong new name')
+
 
     def Search(self):
         for plane in Planes.planes:
