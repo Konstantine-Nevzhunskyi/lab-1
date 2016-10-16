@@ -1,4 +1,4 @@
-#import db
+import db
 
 def menu(planes,i):
     print '__________________________'

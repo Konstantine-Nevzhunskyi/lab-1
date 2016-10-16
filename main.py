@@ -1,7 +1,7 @@
 import interface
-import db
-
-#def __init__ ():
-planes = db.Planes()
+#import db
+import newBD
+#def __init__ (self):
+#planes = db.Planes()
+planes = newBD.DB()
 interface.menu(planes,0)
-
